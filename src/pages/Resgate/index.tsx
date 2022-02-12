@@ -156,7 +156,7 @@ const Resgate: React.FC = (props) => {
                 setModalText(erro);
             }else{
                 valido = true;
-                setModalTitle('RESGATE EFETUADO');
+                setModalTitle('RESGATE EFETUADO!');
                 setModalSubTitle('O valor solicitado estará em sua conta em até 5 dias uteis!');                
                 setModalText(erro);
             }
