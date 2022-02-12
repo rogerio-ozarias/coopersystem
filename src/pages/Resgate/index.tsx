@@ -240,9 +240,9 @@ const Resgate: React.FC = (props) => {
                                         { modalText.map((e, index) =>  <ViewModalText key={index}>{ e }</ViewModalText>) }
                                     </ViewModalContent>
                                     
-                                    <Button title="NOVO RESGATE" onPress={() => {
-                                        setModalVisible(false);                                    
-                                        navigation.goBack();                                    
+                                    <Button title="NOVO RESGATE" onPress={() => {                                                                         
+                                        navigation.goBack();                     
+                                        setModalVisible(false);                  
                                     }} /> 
                                     
                                 </ViewModal>
