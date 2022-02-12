@@ -96,6 +96,11 @@ export const ModalContainer = styled.View`
   flex: 1;
 `;
 
+export const ModalContainerValido = styled.View`
+  background-color: rgba(150, 150, 150, 6);
+  flex: 1;
+`;
+
 export const ViewModal = styled.View`  
   width: 90%;    
   margin: auto;  
@@ -118,12 +123,12 @@ export const ViewModalTitle = styled.Text`
 export const ViewModalSubTitle = styled.Text`
   width: 100%;
   color: #656565;  
-  font-size: 18px;   
+  font-size: 16px;   
   margin-bottom: 30px;
 `;
 
 export const ViewModalText = styled.Text`
   width: 100%;
   color: #656565;  
-  font-size: 18px;     
+  font-size: 16px;      
 `;

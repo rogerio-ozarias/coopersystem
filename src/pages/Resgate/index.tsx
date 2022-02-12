@@ -1,9 +1,10 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import { ScrollView, Modal, Alert } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation, Link } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text';
 import { formatNumber } from "../../helpers/Formata";
 import Button from '../components/Button';
+
 
 import { 
     Container, 
@@ -19,6 +20,7 @@ import {
     BoxAcao,
     ViewModal,
     ModalContainer,
+    ModalContainerValido,
     ViewModalContent,
     ViewModalTitle,
     ViewModalSubTitle,
@@ -105,7 +107,7 @@ const ValorResgate = (props) => {
 }
 
 const Resgate: React.FC = (props) => {
-
+    
     const route = useRoute();
     const routeParams = route.params as InvestimentoInterface;
     const { saldoTotal } = routeParams;          
@@ -115,7 +117,7 @@ const Resgate: React.FC = (props) => {
     const [modalTitle, setModalTitle] = useState('');
     const [modalSubTitle, setModalSubTitle] = useState('');
     const [modalText, setModalText] = useState([]);    
-    const navigation = useNavigation();
+    const navigation = useNavigation();    
 
     const initialState = [];
     const reducer = (resgateState, action ) => {
@@ -163,8 +165,10 @@ const Resgate: React.FC = (props) => {
             setModalSubTitle('Você não informou nenhum valor de resgate.');            
             setModalText(erro);
         }    
+        
         setValidacao(valido);                   
         setModalVisible(true);                                      
+             
     } 
     
     const ModalBox = (props) => {
@@ -222,25 +226,48 @@ const Resgate: React.FC = (props) => {
                     <ColBox>R$ { formatNumber(valorTotal) }</ColBox>
                 </RowBox>                  
                 
-                <Button title="CONFIRMAR RESGATE" onPress={handlePres}/>     
-                
-                <Modal animationType='fade' visible={modalVisible} transparent={true} >
-                    <ModalContainer>
-                        <ViewModal>   
-                            <ViewModalContent>                    
-                                <ViewModalTitle>{modalTitle}</ViewModalTitle>
-                                <ViewModalSubTitle>{modalSubTitle}</ViewModalSubTitle>
-                                { modalText.map((e, index) =>  <ViewModalText key={index}>{ e }</ViewModalText>) }
-                            </ViewModalContent>
-                            <Button title="FECHAR" onPress={() => {
-                                setModalVisible(false);
-                                if(validacao){
-                                    navigation.goBack();
-                                }
-                            }} />   
-                        </ViewModal>
-                    </ModalContainer>
-                </Modal>
+                <Button title="CONFIRMAR RESGATE" onPress={handlePres}/>    
+
+                {
+                    // se tiver valido
+                    validacao ?
+                        <Modal animationType='fade' visible={modalVisible} transparent={false} >
+                            <ModalContainerValido>
+                                <ViewModal>   
+                                    <ViewModalContent>                    
+                                        <ViewModalTitle>{modalTitle}</ViewModalTitle>
+                                        <ViewModalSubTitle>{modalSubTitle}</ViewModalSubTitle>
+                                        { modalText.map((e, index) =>  <ViewModalText key={index}>{ e }</ViewModalText>) }
+                                    </ViewModalContent>
+                                    
+                                    <Button title="NOVO RESGATE" onPress={() => {
+                                        setModalVisible(false);                                    
+                                        navigation.goBack();                                    
+                                    }} /> 
+                                    
+                                </ViewModal>
+                            </ModalContainerValido>
+                        </Modal>
+
+                    :
+                        // se tiver invalido
+                        <Modal animationType='fade' visible={modalVisible} transparent={true} >
+                            <ModalContainer>
+                                <ViewModal>   
+                                    <ViewModalContent>                    
+                                        <ViewModalTitle>{modalTitle}</ViewModalTitle>
+                                        <ViewModalSubTitle>{modalSubTitle}</ViewModalSubTitle>
+                                        { modalText.map((e, index) =>  <ViewModalText key={index}>{ e }</ViewModalText>) }
+                                    </ViewModalContent>
+                                   
+                                    <Button title="CORRIGIR" onPress={() => {
+                                        setModalVisible(false);                                                                        
+                                    }} />   
+                                    
+                                </ViewModal>
+                            </ModalContainer>
+                        </Modal>
+                }                                 
                 
             </ScrollView>
         </Container>
