@@ -14,13 +14,10 @@ export const formatNumber = (amount, decimalCount = 2, decimal = ",", thousands 
     }
   };
 
-  export const valorDB = (valor) => {
-    let valorString = valor.toString();
-    valorString = valorString.replace(/\./g, "");
-    valorString = valorString.replace(/\,/g, ".");
-    valorString = valorString.replace(/[^\.0-9]/g,'');    
+  export const valorDB = (valor, decimalCount = 2) => {
+    let valorString = formatNumber(valor, decimalCount, ".", "");     
     let valorNumerico = parseFloat(valorString);   
-    return parseFloat(valorNumerico);
+    return valorNumerico;
   };
 
   export const valorBR = (valor) => {    

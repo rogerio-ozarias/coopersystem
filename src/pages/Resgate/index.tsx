@@ -2,7 +2,7 @@ import React, { useState, useReducer, useEffect } from 'react';
 import { ScrollView, Modal, Alert } from 'react-native';
 import { useRoute, useNavigation, Link } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text';
-import { formatNumber } from "../../helpers/Formata";
+import { formatNumber, valorDB } from "../../helpers/Formata";
 import Button from '../components/Button';
 
 
@@ -48,7 +48,8 @@ const ValorResgate = (props) => {
     const [infoResgate, setInfoResgate] = useState('');    
     const [labelColor, setLabelColor] = useState('#888');    
     const { acao, saldoTotal, setValorTotal } = props;
-    const valorDispoinivel = saldoTotal*(acao.percentual/100);        
+    // deixa apenas 2 casas decimais
+    const valorDispoinivel = valorDB(saldoTotal*(acao.percentual/100), 2);        
     
     return (
         <BoxAcao>
@@ -73,9 +74,8 @@ const ValorResgate = (props) => {
                     }}
                     value={ valorResgatar }
                     includeRawValueInChangeText={true}
-                    onChangeText={(text, rawText) => {
-                         
-                        let valorDBResgate = parseFloat(rawText);                                                
+                    onChangeText={(text, rawText) => {                         
+                        let valorDBResgate = valorDB(rawText, 2);                                                                   
                         acao.inputInfo =  (valorDBResgate > valorDispoinivel) ? 
                             setInfoResgate(`Valor não pode ser maior que R$ ${formatNumber(valorDispoinivel)}`)
                         :   setInfoResgate('');                        
