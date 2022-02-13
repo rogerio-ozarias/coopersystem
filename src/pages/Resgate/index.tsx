@@ -152,7 +152,7 @@ const Resgate: React.FC = (props) => {
             })        
             if(erro.length){
                 setModalTitle('DADOS INVÁLIDOS');
-                setModalSubTitle('Você preencheu um ou mais campos acima do permitido.');
+                setModalSubTitle('Você preencheu um ou mais campos acima do permitido:');
                 setModalText(erro);
             }else{
                 valido = true;
