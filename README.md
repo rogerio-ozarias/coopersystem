@@ -1,17 +1,8 @@
 # Projeto de seleção Coopersystem (React Native)
-#
-#
 
-# Video do projeto pronto e funcionando
-
-https://drive.google.com/file/d/1MetcCPQz3PyJKX-umWea9w23BI-0uIJF/view?usp=sharing
-
-https://drive.google.com/file/d/1KD--bJbVwv1sx5gnm3c-TyCAi4bsXumE/view?usp=sharing
-
-
-#
-#
-
+* Video do projeto pronto e funcionando
+* https://drive.google.com/file/d/1MetcCPQz3PyJKX-umWea9w23BI-0uIJF/view?usp=sharing
+* https://drive.google.com/file/d/1KD--bJbVwv1sx5gnm3c-TyCAi4bsXumE/view?usp=sharing
 
 
 O teste consiste em criar uma mini aplicação com react native que simula um resgate personalizado de fundos de investimentos em ações.
@@ -87,13 +78,6 @@ Ex: VALE3 tem 8 mil de saldo acumulado, digitar 2 mil no campo valor a resgatar
 
 - **Resultado esperado:** Deve aparecer um modal com a mensagem que o resgate foi efetuado com sucesso, e quando clicar em novo resgate, voltar para tela inicial. [Ex Modal de sucesso](https://github.com/leonardo-coopersystem/desafio/blob/master/prototipos-react-native/3%20-%20Confirma%C3%A7%C3%A3o.png?raw=true)
 
-
-### Entrega
-Enviar link do github com os testes para o email
-leonardo.guedes@coopersystem.com.br
-
-### Telefone para duvidas
-61 9 8194-1274
 
 ### JSON
 
